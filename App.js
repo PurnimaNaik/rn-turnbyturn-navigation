@@ -43,7 +43,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    height:Dimensions.get('window').height-80,
+    height:Dimensions.get('window').height-0,
   },
 
 });
