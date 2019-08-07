@@ -4,19 +4,17 @@ import React from 'react';
 import { View, StyleSheet, Text, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 const { width, height } = Dimensions.get("window");
-import AbortController from "abort-controller"
+import Geolocation from 'react-native-geolocation-service';
 const SCREEN_HEIGHT = height;
 const SCREEN_WIDTH = width;
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.1;
+const LATITUDE_DELTA = 0.05;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export class Map extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
-
-    
   }
 
   componentDidMount(){
@@ -25,7 +23,7 @@ export class Map extends React.PureComponent {
 
   requestUserLocation=()=>{
     // console.log('-----------req user loc-----------')
-    navigator.geolocation.getCurrentPosition(
+    Geolocation.getCurrentPosition(
       position => {
         var lat = parseFloat(position.coords.latitude);
         var long = parseFloat(position.coords.longitude);
